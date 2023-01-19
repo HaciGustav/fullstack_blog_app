@@ -32,6 +32,7 @@ const Dashboard = () => {
                 setSearchValue={setSearchValue}
                 searchValue={searchValue}
             />
+
             {articles
                 ?.filter((item) => isSearched(item))
                 .map((article) => {

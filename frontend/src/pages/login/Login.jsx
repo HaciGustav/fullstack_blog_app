@@ -6,20 +6,14 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { FcGoogle } from 'react-icons/fc';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { login, signUpWithGoogle } from '../../helpers/firebase';
+// import { login, signUpWithGoogle } from '../../helpers/firebase';
+import { signUpWithGoogle } from '../../helpers/firebase';
 import { useNavigate } from 'react-router-dom';
+import useAuthCalls, { login } from '../../hooks/useAuthCalls';
 
 const loginSchema = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup
-        .string()
-        .required()
-        .min(8)
-        .max(16)
-        .matches(/\d+/)
-        .matches(/[a-z]/)
-        .matches(/[A-Z]/)
-        .matches(/[!,?{}><%&$#£+-.]+/),
+    username: yup.string(),
+    password: yup.string().required(),
 });
 
 const Login = () => {
@@ -46,7 +40,7 @@ const Login = () => {
                     }) => (
                         <Form>
                             <TextField
-                                type={'email'}
+                                type="text"
                                 id="email"
                                 label="Email"
                                 variant="standard"
@@ -76,11 +70,7 @@ const Login = () => {
                                 type="submit"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    login(
-                                        values.email,
-                                        values.password,
-                                        navigate
-                                    );
+                                    login(values);
                                 }}>
                                 Login
                             </LoadingButton>
