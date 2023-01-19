@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django_filters",
     'rest_framework.authtoken',
     "corsheaders",
+    'dj_rest_auth',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +143,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         
     ]
+}
+REST_AUTH_SERIALIZERS ={
+    "TOKEN_SERIALIZER" : "user.serializers.CustomTokenSerializer",
 }
 
 #corsheaders

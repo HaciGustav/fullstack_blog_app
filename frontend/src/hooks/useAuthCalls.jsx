@@ -3,14 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { toastFailNotify, toastSuccessNotify } from '../helpers/toastNotify';
 
 export const login = async (userInfo) => {
-    const BASE_URL = 'https://djangoblogapppa.pythonanywhere.com/';
-    const { email, password } = userInfo;
+    const BASE_URL = 'http://127.0.0.1:8000/';
+    // const { username, password } = userInfo;
 
     try {
-        const { data } = await axios.post(`${BASE_URL}user/login/`, {
-            username: email,
-            password,
-        });
+        const data = await axios.post(`${BASE_URL}user/auth/login/`, userInfo);
 
         console.log(data);
         toastSuccessNotify('Welcome Back');

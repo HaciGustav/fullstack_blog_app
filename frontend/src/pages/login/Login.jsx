@@ -71,6 +71,7 @@ const Login = () => {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     login(values);
+                                    console.log(values);
                                 }}>
                                 Login
                             </LoadingButton>

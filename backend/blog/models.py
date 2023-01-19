@@ -9,6 +9,7 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length = 200, unique= True)
+    author = models.CharField(max_length=200, null=True, blank=True)
     content = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     is_published = models.BooleanField(default=False)
